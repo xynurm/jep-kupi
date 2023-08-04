@@ -12,7 +12,7 @@ import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { PostProducts200 } from './entities/post.products.200.entity';
-import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiOkResponse, ApiParam, ApiTags } from '@nestjs/swagger';
 import { successResponse } from 'src/common/constants/httpResponses/template';
 import { GetProduct200 } from './entities/get.products.200.entiy';
 
@@ -47,9 +47,16 @@ export class ProductsController {
     });
   }
 
+  @ApiTags('products')
+  @ApiParam({
+    name: 'id',
+    type: 'string',
+    required: true,
+    description: 'Id from a product',
+  })
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.productsService.findOne(+id);
+    return this.productsService.findOne(id);
   }
 
   @Patch(':id')

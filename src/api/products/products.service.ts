@@ -29,8 +29,10 @@ export class ProductsService {
     return await prismaClient.products.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} product`;
+  async findOne(id: string): Promise<Products> {
+    return await prismaClient.products.findFirstOrThrow({
+      where: { id: id },
+    });
   }
 
   update(id: number, updateProductDto: UpdateProductDto) {
