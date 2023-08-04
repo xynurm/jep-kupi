@@ -2,13 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { ObjectId } from 'bson';
 import { prismaClient } from 'src/common/utils/prisma/prismaClient';
 import { UpdateProductDto } from './dto/update-product.dto';
+import { promises } from 'dns';
+import { Products } from '@prisma/client';
 
 @Injectable()
 export class ProductsService {
-  // create(createProductDto: CreateProductDto) {
-  //   return 'This action adds a new product';
-  // }
-
   async createOne({
     name,
     price,
@@ -27,8 +25,8 @@ export class ProductsService {
     return product;
   }
 
-  findAll() {
-    return `This action returns all products`;
+  async findAll(): Promise<Products[]> {
+    return await prismaClient.products.findMany();
   }
 
   findOne(id: number) {

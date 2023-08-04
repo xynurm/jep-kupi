@@ -14,6 +14,7 @@ import { UpdateProductDto } from './dto/update-product.dto';
 import { PostProducts200 } from './entities/post.products.200.entity';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { successResponse } from 'src/common/constants/httpResponses/template';
+import { GetProduct200 } from './entities/get.products.200.entiy';
 
 @Controller('products')
 export class ProductsController {
@@ -35,9 +36,15 @@ export class ProductsController {
     });
   }
 
+  @ApiTags('products')
   @Get()
-  findAll() {
-    return this.productsService.findAll();
+  @ApiOkResponse({ type: GetProduct200 })
+  async findAll(@Request() req: Request) {
+    return successResponse({
+      data: await this.productsService.findAll(),
+      status_code: 200,
+      path: req.url,
+    });
   }
 
   @Get(':id')
