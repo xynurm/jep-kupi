@@ -9,16 +9,22 @@ const responseAPI = {
       id: '64233505af3586475d9bdc8b',
       name: 'Sanger',
       price: '10000',
+      created_at: '2023-03-30T09:40:56.456Z',
+      updated_at: '2023-03-30T09:40:56.456Z',
     },
     {
       id: '64233505af3586475d9bdc8c',
       name: 'Kupi',
       price: '40000',
+      created_at: '2023-03-30T09:40:56.456Z',
+      updated_at: '2023-03-30T09:40:56.456Z',
     },
     {
       id: '64233505af3586475d9bdc8d',
       name: 'Teh',
       dial_code: '5000',
+      created_at: '2023-03-30T09:40:56.456Z',
+      updated_at: '2023-03-30T09:40:56.456Z',
     },
   ],
   error: {

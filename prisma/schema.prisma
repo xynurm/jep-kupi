@@ -11,7 +11,9 @@ datasource db {
 }
 
 model Products {
-  id    String   @id @default(uuid()) @map("_id") @db.ObjectId
-  name  String
-  price String
+  id         String   @id @default(uuid()) @map("_id") @db.ObjectId
+  name       String
+  price      String
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
 }

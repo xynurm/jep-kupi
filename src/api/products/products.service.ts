@@ -19,6 +19,8 @@ export class ProductsService {
         id: `${new ObjectId()}`,
         name,
         price,
+        created_at: new Date(),
+        updated_at: new Date(),
       },
     });
 
