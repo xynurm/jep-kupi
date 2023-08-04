@@ -37,8 +37,17 @@ export class ProductsService {
     });
   }
 
-  update(id: number, updateProductDto: UpdateProductDto) {
-    return `This action updates a #${id} product`;
+  async updateOne(
+    id: string,
+    updateProductDto: UpdateProductDto,
+  ): Promise<Products> {
+    return await prismaClient.products.update({
+      where: { id: id },
+      data: {
+        ...updateProductDto,
+        updated_at: new Date(),
+      },
+    });
   }
 
   remove(id: number) {
