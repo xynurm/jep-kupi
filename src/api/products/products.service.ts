@@ -1,9 +1,8 @@
 import { Injectable } from '@nestjs/common';
+import { Products } from '@prisma/client';
 import { ObjectId } from 'bson';
 import { prismaClient } from 'src/common/utils/prisma/prismaClient';
 import { UpdateProductDto } from './dto/update-product.dto';
-import { promises } from 'dns';
-import { Products } from '@prisma/client';
 
 @Injectable()
 export class ProductsService {
